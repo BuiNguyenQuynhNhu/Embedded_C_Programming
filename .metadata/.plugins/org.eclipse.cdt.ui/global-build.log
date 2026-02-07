@@ -1,0 +1,1417 @@
+17:11:56 **** Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m3 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f103c8tx.d" -MT"Startup/startup_stm32f103c8tx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f103c8tx.o" "../Startup/startup_stm32f103c8tx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+../Src/main.c:2:10: fatal error: uart.h: No such file or directory
+    2 | #include "uart.h"
+      |          ^~~~~~~~
+compilation terminated.
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+17:14:15 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c:282:1: warning: data definition has no type or storage class
+  282 | SPI_Slave_init();
+      | ^~~~~~~~~~~~~~
+../Src/main.c:282:1: warning: type defaults to 'int' in declaration of 'SPI_Slave_init' [-Wimplicit-int]
+arm-none-eabi-gcc -o "lab4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Startup/startup_stm32f103c8tx.o: in function `Reset_Handler':
+C:/Users/Lenovo/Desktop/embedding/lab4/Debug/../Startup/startup_stm32f103c8tx.s:97:(.text.Reset_Handler+0x32): undefined reference to `main'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: lab4.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+17:16:02 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-gcc -o "lab4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Startup/startup_stm32f103c8tx.o: in function `Reset_Handler':
+C:/Users/Lenovo/Desktop/embedding/lab4/Debug/../Startup/startup_stm32f103c8tx.s:97:(.text.Reset_Handler+0x32): undefined reference to `main'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: lab4.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+17:16:34 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c:281:6: warning: return type of 'main' is not 'int' [-Wmain]
+  281 | void main(void){
+      |      ^~~~
+../Src/main.c: In function 'main':
+../Src/main.c:282:9: warning: implicit declaration of function 'SPI_Slave_init'; did you mean 'SPI_Slave_Init'? [-Wimplicit-function-declaration]
+  282 |         SPI_Slave_init();
+      |         ^~~~~~~~~~~~~~
+      |         SPI_Slave_Init
+arm-none-eabi-gcc -o "lab4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `main':
+C:/Users/Lenovo/Desktop/embedding/lab4/Debug/../Src/main.c:282:(.text.main+0x4): undefined reference to `SPI_Slave_init'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: lab4.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+17:16:48 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c:281:6: warning: return type of 'main' is not 'int' [-Wmain]
+  281 | void main(void){
+      |      ^~~~
+arm-none-eabi-gcc -o "lab4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: lab4.elf
+ 
+arm-none-eabi-size  lab4.elf 
+arm-none-eabi-objdump -h -S lab4.elf  > "lab4.list"
+   text	   data	    bss	    dec	    hex	filename
+    800	      0	   1568	   2368	    940	lab4.elf
+Finished building: default.size.stdout
+ 
+Finished building: lab4.list
+ 
+17:18:03 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-size  lab4.elf 
+   text	   data	    bss	    dec	    hex	filename
+    800	      0	   1568	   2368	    940	lab4.elf
+Finished building: default.size.stdout
+ 
+17:19:24 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-size  lab4.elf 
+   text	   data	    bss	    dec	    hex	filename
+    800	      0	   1568	   2368	    940	lab4.elf
+Finished building: default.size.stdout
+ 
+17:20:48 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c:281:6: warning: return type of 'main' is not 'int' [-Wmain]
+  281 | void main(void){
+      |      ^~~~
+arm-none-eabi-gcc -o "lab4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: lab4.elf
+ 
+arm-none-eabi-size  lab4.elf 
+arm-none-eabi-objdump -h -S lab4.elf  > "lab4.list"
+   text	   data	    bss	    dec	    hex	filename
+    800	      0	   1568	   2368	    940	lab4.elf
+Finished building: default.size.stdout
+ 
+Finished building: lab4.list
+ 
+17:20:58 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-size  lab4.elf 
+   text	   data	    bss	    dec	    hex	filename
+    800	      0	   1568	   2368	    940	lab4.elf
+Finished building: default.size.stdout
+ 
+17:22:54 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c:281:6: warning: return type of 'main' is not 'int' [-Wmain]
+  281 | void main(void){
+      |      ^~~~
+arm-none-eabi-gcc -o "lab4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: lab4.elf
+ 
+arm-none-eabi-size  lab4.elf 
+arm-none-eabi-objdump -h -S lab4.elf  > "lab4.list"
+   text	   data	    bss	    dec	    hex	filename
+   1164	      0	   1568	   2732	    aac	lab4.elf
+Finished building: default.size.stdout
+ 
+Finished building: lab4.list
+ 
+17:23:58 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-size  lab4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1164	      0	   1568	   2732	    aac	lab4.elf
+Finished building: default.size.stdout
+ 
+17:24:10 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-size  lab4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1164	      0	   1568	   2732	    aac	lab4.elf
+Finished building: default.size.stdout
+ 
+17:25:01 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-size  lab4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1164	      0	   1568	   2732	    aac	lab4.elf
+Finished building: default.size.stdout
+ 
+17:25:12 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-size  lab4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1164	      0	   1568	   2732	    aac	lab4.elf
+Finished building: default.size.stdout
+ 
+01:12:13 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-size  lab4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1164	      0	   1568	   2732	    aac	lab4.elf
+Finished building: default.size.stdout
+ 
+01:12:24 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-size  lab4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1164	      0	   1568	   2732	    aac	lab4.elf
+Finished building: default.size.stdout
+ 
+01:15:10 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-size  lab4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1164	      0	   1568	   2732	    aac	lab4.elf
+Finished building: default.size.stdout
+ 
+01:15:45 **** Build of configuration Debug for project lab2 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "lab2.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab2\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: lab2.elf
+ 
+arm-none-eabi-size  lab2.elf 
+arm-none-eabi-objdump -h -S lab2.elf  > "lab2.list"
+   text	   data	    bss	    dec	    hex	filename
+   1212	     24	   1632	   2868	    b34	lab2.elf
+Finished building: default.size.stdout
+ 
+Finished building: lab2.list
+ 
+01:15:59 **** Incremental Build of configuration Debug for project lab2 ****
+make -j16 all 
+arm-none-eabi-size  lab2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1212	     24	   1632	   2868	    b34	lab2.elf
+Finished building: default.size.stdout
+ 
+01:24:29 **** Incremental Build of configuration Debug for project lab2 ****
+make -j16 all 
+arm-none-eabi-size  lab2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1212	     24	   1632	   2868	    b34	lab2.elf
+Finished building: default.size.stdout
+ 
+01:24:36 **** Incremental Build of configuration Debug for project lab2 ****
+make -j16 all 
+arm-none-eabi-size  lab2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1212	     24	   1632	   2868	    b34	lab2.elf
+Finished building: default.size.stdout
+ 
+01:24:58 **** Incremental Build of configuration Debug for project lab2 ****
+make -j16 all 
+arm-none-eabi-size  lab2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1212	     24	   1632	   2868	    b34	lab2.elf
+Finished building: default.size.stdout
+ 
+01:26:50 **** Incremental Build of configuration Debug for project lab2 ****
+make -j16 all 
+arm-none-eabi-size  lab2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1212	     24	   1632	   2868	    b34	lab2.elf
+Finished building: default.size.stdout
+ 
+01:27:30 **** Incremental Build of configuration Debug for project lab2 ****
+make -j16 all 
+arm-none-eabi-size  lab2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1212	     24	   1632	   2868	    b34	lab2.elf
+Finished building: default.size.stdout
+ 
+01:28:26 **** Incremental Build of configuration Debug for project lab2 ****
+make -j16 all 
+arm-none-eabi-size  lab2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1212	     24	   1632	   2868	    b34	lab2.elf
+Finished building: default.size.stdout
+ 
+01:29:21 **** Incremental Build of configuration Debug for project lab2 ****
+make -j16 all 
+arm-none-eabi-size  lab2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1212	     24	   1632	   2868	    b34	lab2.elf
+Finished building: default.size.stdout
+ 
+01:29:23 **** Incremental Build of configuration Debug for project lab2 ****
+make -j16 all 
+arm-none-eabi-size  lab2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1212	     24	   1632	   2868	    b34	lab2.elf
+Finished building: default.size.stdout
+ 
+01:31:27 **** Incremental Build of configuration Debug for project lab2 ****
+make -j16 all 
+arm-none-eabi-size  lab2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1212	     24	   1632	   2868	    b34	lab2.elf
+Finished building: default.size.stdout
+ 
+01:31:34 **** Incremental Build of configuration Debug for project lab2 ****
+make -j16 all 
+arm-none-eabi-size  lab2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1212	     24	   1632	   2868	    b34	lab2.elf
+Finished building: default.size.stdout
+ 
+01:31:56 **** Incremental Build of configuration Debug for project lab2 ****
+make -j16 all 
+arm-none-eabi-size  lab2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1212	     24	   1632	   2868	    b34	lab2.elf
+Finished building: default.size.stdout
+ 
+01:31:59 **** Incremental Build of configuration Debug for project lab2 ****
+make -j16 all 
+arm-none-eabi-size  lab2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1212	     24	   1632	   2868	    b34	lab2.elf
+Finished building: default.size.stdout
+ 
+07:54:37 **** Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m3 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f103c8tx.d" -MT"Startup/startup_stm32f103c8tx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f103c8tx.o" "../Startup/startup_stm32f103c8tx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"  -l"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -lC:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: cannot find -lC:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include: No such file or directory
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: cannot find -lC:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include: No such file or directory
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Snake.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+07:57:24 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+    688	      0	   1568	   2256	    8d0	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+07:57:31 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+    688	      0	   1568	   2256	    8d0	Snake.elf
+Finished building: default.size.stdout
+ 
+08:16:58 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+    744	      0	   1568	   2312	    908	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+08:17:46 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+    744	      0	   1568	   2312	    908	Snake.elf
+Finished building: default.size.stdout
+ 
+08:18:04 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+    744	      0	   1568	   2312	    908	Snake.elf
+Finished building: default.size.stdout
+ 
+08:18:24 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+    744	      0	   1568	   2312	    908	Snake.elf
+Finished building: default.size.stdout
+ 
+08:19:09 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+    744	      0	   1568	   2312	    908	Snake.elf
+Finished building: default.size.stdout
+ 
+08:20:32 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+    744	      0	   1568	   2312	    908	Snake.elf
+Finished building: default.size.stdout
+ 
+08:20:58 **** Build of configuration Debug for project lab2 ****
+make -j16 all 
+arm-none-eabi-size  lab2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1212	     24	   1632	   2868	    b34	lab2.elf
+Finished building: default.size.stdout
+ 
+08:21:32 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+    744	      0	   1568	   2312	    908	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+08:24:10 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+    748	      0	   1568	   2316	    90c	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+08:26:35 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+    732	      0	   1568	   2300	    8fc	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+08:27:03 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+    732	      0	   1568	   2300	    8fc	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+08:28:02 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+    728	      0	   1568	   2296	    8f8	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+08:29:28 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+    748	      0	   1568	   2316	    90c	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+08:30:53 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c:78:1: error: expected identifier or '(' before '}' token
+   78 | }
+      | ^
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+08:31:06 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+    824	      0	   1568	   2392	    958	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+08:33:22 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:42:24: warning: unused variable 'row_pin' [-Wunused-variable]
+   42 |     const unsigned int row_pin[8] = {
+      |                        ^~~~~~~
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+    956	      0	   1568	   2524	    9dc	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+08:35:18 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+    844	      0	   1568	   2412	    96c	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+08:45:10 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+    844	      0	   1568	   2412	    96c	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+08:48:08 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+    872	      0	   1568	   2440	    988	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+09:16:16 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c:1:10: fatal error: stm32f10x.h: No such file or directory
+    1 | #include "stm32f10x.h"
+      |          ^~~~~~~~~~~~~
+compilation terminated.
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+09:16:59 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'move_snake':
+../Src/main.c:74:11: warning: unused variable 'old_pos' [-Wunused-variable]
+   74 |     COORD old_pos = snake.pos;
+      |           ^~~~~~~
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+09:17:15 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+09:19:34 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+09:19:59 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+09:21:30 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+09:23:13 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'move_snake':
+../Src/main.c:74:11: warning: unused variable 'old_pos' [-Wunused-variable]
+   74 |     COORD old_pos = snake.pos;
+      |           ^~~~~~~
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+09:23:48 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+09:26:49 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+09:27:18 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+09:27:43 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+09:28:02 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+09:28:52 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+09:30:21 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+09:30:45 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+09:36:46 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+09:37:20 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+09:41:13 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+09:42:04 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7476	     92	   2732	  10300	   283c	Snake.elf
+Finished building: default.size.stdout
+ 
+09:51:09 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'move_snake':
+../Src/main.c:71:11: warning: unused variable 'old_pos' [-Wunused-variable]
+   71 |     COORD old_pos = snake.pos;
+      |           ^~~~~~~
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+   7516	     92	   2732	  10340	   2864	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+09:52:32 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'move_snake':
+../Src/main.c:71:11: warning: unused variable 'old_pos' [-Wunused-variable]
+   71 |     COORD old_pos = snake.pos;
+      |           ^~~~~~~
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+   5636	     92	   2732	   8460	   210c	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+10:00:36 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'move_snake':
+../Src/main.c:71:11: warning: unused variable 'old_pos' [-Wunused-variable]
+   71 |     COORD old_pos = snake.pos;
+      |           ^~~~~~~
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+   5636	     92	   2732	   8460	   210c	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+10:01:38 **** Incremental Build of configuration Debug for project lab2 ****
+make -j16 all 
+arm-none-eabi-size  lab2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1212	     24	   1632	   2868	    b34	lab2.elf
+Finished building: default.size.stdout
+ 
+10:03:38 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'UART_Init':
+../Src/main.c:31:25: error: 'GPIOAEN' undeclared (first use in this function); did you mean 'GPIOE'?
+   31 |         RCC->APB2ENR |= GPIOAEN;
+      |                         ^~~~~~~
+      |                         GPIOE
+../Src/main.c:31:25: note: each undeclared identifier is reported only once for each function it appears in
+../Src/main.c:32:25: error: 'UART1EN' undeclared (first use in this function)
+   32 |         RCC->APB2ENR |= UART1EN;
+      |                         ^~~~~~~
+../Src/main.c: In function 'UART_SendString':
+../Src/main.c:52:9: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+   52 |         while (!(USART1->SR & (1 << 7)));
+      |         ^~~~~
+In file included from ../Src/main.c:1:
+C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:675:29: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  675 | #define USART1              ((USART_TypeDef *)USART1_BASE)
+      |                             ^
+../Src/main.c:53:13: note: in expansion of macro 'USART1'
+   53 |             USART1->DR = c;
+      |             ^~~~~~
+../Src/main.c:53:26: error: 'c' undeclared (first use in this function)
+   53 |             USART1->DR = c;
+      |                          ^
+../Src/main.c: In function 'move_snake':
+../Src/main.c:80:11: warning: unused variable 'old_pos' [-Wunused-variable]
+   80 |     COORD old_pos = snake.pos;
+      |           ^~~~~~~
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+10:07:16 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+   6148	    100	   2708	   8956	   22fc	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+10:29:27 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+   6148	    100	   2708	   8956	   22fc	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+10:54:53 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+   6156	    100	   2708	   8964	   2304	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+11:15:07 **** Build of configuration Debug for project Calculate ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m3 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f103c8tx.d" -MT"Startup/startup_stm32f103c8tx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f103c8tx.o" "../Startup/startup_stm32f103c8tx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+../Src/main.c:1:10: fatal error: stm32f103xb.h: No such file or directory
+    1 | #include "stm32f103xb.h"
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+11:16:29 **** Incremental Build of configuration Debug for project Calculate ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -o "Calculate.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Calculate\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Calculate.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Calculate.elf
+ 
+arm-none-eabi-size  Calculate.elf 
+arm-none-eabi-objdump -h -S Calculate.elf  > "Calculate.list"
+   text	   data	    bss	    dec	    hex	filename
+   4300	     96	   1896	   6292	   1894	Calculate.elf
+Finished building: default.size.stdout
+ 
+Finished building: Calculate.list
+ 
+11:16:35 **** Incremental Build of configuration Debug for project Calculate ****
+make -j16 all 
+arm-none-eabi-size  Calculate.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4300	     96	   1896	   6292	   1894	Calculate.elf
+Finished building: default.size.stdout
+ 
+11:22:42 **** Incremental Build of configuration Debug for project Calculate ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Calculate.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Calculate\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Calculate.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Calculate.elf
+ 
+arm-none-eabi-size  Calculate.elf 
+arm-none-eabi-objdump -h -S Calculate.elf  > "Calculate.list"
+   text	   data	    bss	    dec	    hex	filename
+   4336	     96	   1896	   6328	   18b8	Calculate.elf
+Finished building: default.size.stdout
+ 
+Finished building: Calculate.list
+ 
+11:24:45 **** Incremental Build of configuration Debug for project Calculate ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:51:5: warning: implicit declaration of function 'keypad_init' [-Wimplicit-function-declaration]
+   51 |     keypad_init(); // Khởi tạo PA0-PA7 như bài trước
+      |     ^~~~~~~~~~~
+../Src/main.c:56:20: warning: implicit declaration of function 'keypad_scan' [-Wimplicit-function-declaration]
+   56 |         char key = keypad_scan(); // Hàm quét ma trận 4x4
+      |                    ^~~~~~~~~~~
+arm-none-eabi-gcc -o "Calculate.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Calculate\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Calculate.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `main':
+C:/Users/Lenovo/Desktop/embedding/Calculate/Debug/../Src/main.c:51:(.text.main+0xa): undefined reference to `keypad_init'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/Users/Lenovo/Desktop/embedding/Calculate/Debug/../Src/main.c:56:(.text.main+0x14): undefined reference to `keypad_scan'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Calculate.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+11:24:54 **** Incremental Build of configuration Debug for project Calculate ****
+make -j16 all 
+arm-none-eabi-gcc -o "Calculate.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Calculate\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Calculate.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `main':
+C:/Users/Lenovo/Desktop/embedding/Calculate/Debug/../Src/main.c:51:(.text.main+0xa): undefined reference to `keypad_init'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/Users/Lenovo/Desktop/embedding/Calculate/Debug/../Src/main.c:56:(.text.main+0x14): undefined reference to `keypad_scan'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Calculate.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+11:25:14 **** Incremental Build of configuration Debug for project Calculate ****
+make -j16 all 
+arm-none-eabi-gcc -o "Calculate.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Calculate\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Calculate.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `main':
+C:/Users/Lenovo/Desktop/embedding/Calculate/Debug/../Src/main.c:51:(.text.main+0xa): undefined reference to `keypad_init'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/Users/Lenovo/Desktop/embedding/Calculate/Debug/../Src/main.c:56:(.text.main+0x14): undefined reference to `keypad_scan'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Calculate.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+11:25:27 **** Incremental Build of configuration Debug for project Calculate ****
+make -j16 all 
+arm-none-eabi-gcc -o "Calculate.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Calculate\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Calculate.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `main':
+C:/Users/Lenovo/Desktop/embedding/Calculate/Debug/../Src/main.c:51:(.text.main+0xa): undefined reference to `keypad_init'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/Users/Lenovo/Desktop/embedding/Calculate/Debug/../Src/main.c:56:(.text.main+0x14): undefined reference to `keypad_scan'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Calculate.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+11:26:30 **** Incremental Build of configuration Debug for project Calculate ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Calculate.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Calculate\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Calculate.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Calculate.elf
+ 
+arm-none-eabi-size  Calculate.elf 
+arm-none-eabi-objdump -h -S Calculate.elf  > "Calculate.list"
+   text	   data	    bss	    dec	    hex	filename
+   4436	    100	   1924	   6460	   193c	Calculate.elf
+Finished building: default.size.stdout
+ 
+Finished building: Calculate.list
+ 
+11:48:41 **** Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-size  lab4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1164	      0	   1568	   2732	    aac	lab4.elf
+Finished building: default.size.stdout
+ 
+11:49:18 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c:281:6: warning: return type of 'main' is not 'int' [-Wmain]
+  281 | void main(void){
+      |      ^~~~
+arm-none-eabi-gcc -o "lab4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: lab4.elf
+ 
+arm-none-eabi-size  lab4.elf 
+arm-none-eabi-objdump -h -S lab4.elf  > "lab4.list"
+   text	   data	    bss	    dec	    hex	filename
+    800	      0	   1568	   2368	    940	lab4.elf
+Finished building: default.size.stdout
+ 
+Finished building: lab4.list
+ 
+11:49:27 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-size  lab4.elf 
+   text	   data	    bss	    dec	    hex	filename
+    800	      0	   1568	   2368	    940	lab4.elf
+Finished building: default.size.stdout
+ 
+11:51:50 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-gcc -o "lab4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: lab4.elf
+ 
+arm-none-eabi-size  lab4.elf 
+arm-none-eabi-objdump -h -S lab4.elf  > "lab4.list"
+   text	   data	    bss	    dec	    hex	filename
+    800	      0	   1568	   2368	    940	lab4.elf
+arm-none-eabi-objcopy  -O binary lab4.elf  "lab4.bin"
+Finished building: default.size.stdout
+ 
+Finished building: lab4.list
+ 
+Finished building: lab4.bin
+ 
+11:57:33 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "lab4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: lab4.elf
+ 
+arm-none-eabi-size  lab4.elf 
+arm-none-eabi-objdump -h -S lab4.elf  > "lab4.list"
+   text	   data	    bss	    dec	    hex	filename
+    956	      0	   1568	   2524	    9dc	lab4.elf
+arm-none-eabi-objcopy  -O binary lab4.elf  "lab4.bin"
+Finished building: default.size.stdout
+ 
+Finished building: lab4.list
+Finished building: lab4.bin
+ 
+ 
+11:58:09 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "lab4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: lab4.elf
+ 
+arm-none-eabi-size  lab4.elf 
+arm-none-eabi-objdump -h -S lab4.elf  > "lab4.list"
+   text	   data	    bss	    dec	    hex	filename
+   1316	      0	   1568	   2884	    b44	lab4.elf
+arm-none-eabi-objcopy  -O binary lab4.elf  "lab4.bin"
+Finished building: default.size.stdout
+ 
+Finished building: lab4.list
+Finished building: lab4.bin
+ 
+ 
+12:00:58 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'master':
+../Src/main.c:283:13: warning: implicit declaration of function 'LED_Init' [-Wimplicit-function-declaration]
+  283 |             LED_Init();
+      |             ^~~~~~~~
+../Src/main.c:288:17: warning: implicit declaration of function 'SPI1_Transmit'; did you mean 'SPI_Transmit'? [-Wimplicit-function-declaration]
+  288 |                 SPI1_Transmit(1);         // Gửi lệnh 1 để Slave Tắt
+      |                 ^~~~~~~~~~~~~
+      |                 SPI_Transmit
+../Src/main.c: At top level:
+../Src/main.c:297:6: warning: conflicting types for 'LED_Init'; have 'void(void)'
+  297 | void LED_Init(void) {
+      |      ^~~~~~~~
+../Src/main.c:283:13: note: previous implicit declaration of 'LED_Init' with type 'void(void)'
+  283 |             LED_Init();
+      |             ^~~~~~~~
+../Src/main.c:303:6: warning: conflicting types for 'SPI1_Transmit'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  303 | void SPI1_Transmit(uint8_t data) {
+      |      ^~~~~~~~~~~~~
+../Src/main.c:288:17: note: previous implicit declaration of 'SPI1_Transmit' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  288 |                 SPI1_Transmit(1);         // Gửi lệnh 1 để Slave Tắt
+      |                 ^~~~~~~~~~~~~
+arm-none-eabi-gcc -o "lab4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: lab4.elf
+ 
+arm-none-eabi-size  lab4.elf 
+arm-none-eabi-objdump -h -S lab4.elf  > "lab4.list"
+   text	   data	    bss	    dec	    hex	filename
+    948	      0	   1568	   2516	    9d4	lab4.elf
+arm-none-eabi-objcopy  -O binary lab4.elf  "lab4.bin"
+Finished building: default.size.stdout
+ 
+Finished building: lab4.list
+Finished building: lab4.bin
+ 
+ 
+12:01:30 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'master':
+../Src/main.c:283:13: warning: implicit declaration of function 'LED_Init' [-Wimplicit-function-declaration]
+  283 |             LED_Init();
+      |             ^~~~~~~~
+../Src/main.c:288:17: warning: implicit declaration of function 'SPI1_Transmit'; did you mean 'SPI_Transmit'? [-Wimplicit-function-declaration]
+  288 |                 SPI1_Transmit(1);         // Gửi lệnh 1 để Slave Tắt
+      |                 ^~~~~~~~~~~~~
+      |                 SPI_Transmit
+../Src/main.c: At top level:
+../Src/main.c:297:6: warning: conflicting types for 'LED_Init'; have 'void(void)'
+  297 | void LED_Init(void) {
+      |      ^~~~~~~~
+../Src/main.c:283:13: note: previous implicit declaration of 'LED_Init' with type 'void(void)'
+  283 |             LED_Init();
+      |             ^~~~~~~~
+../Src/main.c:303:6: warning: conflicting types for 'SPI1_Transmit'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  303 | void SPI1_Transmit(uint8_t data) {
+      |      ^~~~~~~~~~~~~
+../Src/main.c:288:17: note: previous implicit declaration of 'SPI1_Transmit' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  288 |                 SPI1_Transmit(1);         // Gửi lệnh 1 để Slave Tắt
+      |                 ^~~~~~~~~~~~~
+arm-none-eabi-gcc -o "lab4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: lab4.elf
+ 
+arm-none-eabi-size  lab4.elf 
+arm-none-eabi-objdump -h -S lab4.elf  > "lab4.list"
+   text	   data	    bss	    dec	    hex	filename
+   1396	      0	   1568	   2964	    b94	lab4.elf
+arm-none-eabi-objcopy  -O binary lab4.elf  "lab4.bin"
+Finished building: default.size.stdout
+ 
+Finished building: lab4.list
+Finished building: lab4.bin
+ 
+ 
+12:03:53 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'master':
+../Src/main.c:283:13: warning: implicit declaration of function 'LED_Init' [-Wimplicit-function-declaration]
+  283 |             LED_Init();
+      |             ^~~~~~~~
+../Src/main.c:288:17: warning: implicit declaration of function 'SPI1_Transmit'; did you mean 'SPI_Transmit'? [-Wimplicit-function-declaration]
+  288 |                 SPI1_Transmit(1);         // Gửi lệnh 1 để Slave Tắt
+      |                 ^~~~~~~~~~~~~
+      |                 SPI_Transmit
+../Src/main.c: At top level:
+../Src/main.c:297:6: warning: conflicting types for 'LED_Init'; have 'void(void)'
+  297 | void LED_Init(void) {
+      |      ^~~~~~~~
+../Src/main.c:283:13: note: previous implicit declaration of 'LED_Init' with type 'void(void)'
+  283 |             LED_Init();
+      |             ^~~~~~~~
+../Src/main.c:303:6: warning: conflicting types for 'SPI1_Transmit'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  303 | void SPI1_Transmit(uint8_t data) {
+      |      ^~~~~~~~~~~~~
+../Src/main.c:288:17: note: previous implicit declaration of 'SPI1_Transmit' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  288 |                 SPI1_Transmit(1);         // Gửi lệnh 1 để Slave Tắt
+      |                 ^~~~~~~~~~~~~
+arm-none-eabi-gcc -o "lab4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: lab4.elf
+ 
+arm-none-eabi-size  lab4.elf 
+arm-none-eabi-objdump -h -S lab4.elf  > "lab4.list"
+   text	   data	    bss	    dec	    hex	filename
+    968	      0	   1568	   2536	    9e8	lab4.elf
+arm-none-eabi-objcopy  -O binary lab4.elf  "lab4.bin"
+Finished building: default.size.stdout
+ 
+Finished building: lab4.list
+Finished building: lab4.bin
+ 
+ 
+12:04:58 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'master':
+../Src/main.c:283:13: warning: implicit declaration of function 'LED_Init' [-Wimplicit-function-declaration]
+  283 |             LED_Init();
+      |             ^~~~~~~~
+../Src/main.c:288:17: warning: implicit declaration of function 'SPI1_Transmit'; did you mean 'SPI_Transmit'? [-Wimplicit-function-declaration]
+  288 |                 SPI1_Transmit(1);         // Gửi lệnh 1 để Slave Tắt
+      |                 ^~~~~~~~~~~~~
+      |                 SPI_Transmit
+../Src/main.c: At top level:
+../Src/main.c:297:6: warning: conflicting types for 'LED_Init'; have 'void(void)'
+  297 | void LED_Init(void) {
+      |      ^~~~~~~~
+../Src/main.c:283:13: note: previous implicit declaration of 'LED_Init' with type 'void(void)'
+  283 |             LED_Init();
+      |             ^~~~~~~~
+../Src/main.c:303:6: warning: conflicting types for 'SPI1_Transmit'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  303 | void SPI1_Transmit(uint8_t data) {
+      |      ^~~~~~~~~~~~~
+../Src/main.c:288:17: note: previous implicit declaration of 'SPI1_Transmit' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  288 |                 SPI1_Transmit(1);         // Gửi lệnh 1 để Slave Tắt
+      |                 ^~~~~~~~~~~~~
+arm-none-eabi-gcc -o "lab4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: lab4.elf
+ 
+arm-none-eabi-size  lab4.elf 
+arm-none-eabi-objdump -h -S lab4.elf  > "lab4.list"
+   text	   data	    bss	    dec	    hex	filename
+   1408	      0	   1568	   2976	    ba0	lab4.elf
+arm-none-eabi-objcopy  -O binary lab4.elf  "lab4.bin"
+Finished building: default.size.stdout
+ 
+Finished building: lab4.list
+Finished building: lab4.bin
+ 
+ 
+12:11:45 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'master':
+../Src/main.c:283:13: warning: implicit declaration of function 'LED_Init' [-Wimplicit-function-declaration]
+  283 |             LED_Init();
+      |             ^~~~~~~~
+../Src/main.c:288:17: warning: implicit declaration of function 'SPI1_Transmit'; did you mean 'SPI_Transmit'? [-Wimplicit-function-declaration]
+  288 |                 SPI1_Transmit(1);         // Gửi lệnh 1 để Slave Tắt
+      |                 ^~~~~~~~~~~~~
+      |                 SPI_Transmit
+../Src/main.c: At top level:
+../Src/main.c:297:6: warning: conflicting types for 'LED_Init'; have 'void(void)'
+  297 | void LED_Init(void) {
+      |      ^~~~~~~~
+../Src/main.c:283:13: note: previous implicit declaration of 'LED_Init' with type 'void(void)'
+  283 |             LED_Init();
+      |             ^~~~~~~~
+../Src/main.c:303:6: warning: conflicting types for 'SPI1_Transmit'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  303 | void SPI1_Transmit(uint8_t data) {
+      |      ^~~~~~~~~~~~~
+../Src/main.c:288:17: note: previous implicit declaration of 'SPI1_Transmit' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  288 |                 SPI1_Transmit(1);         // Gửi lệnh 1 để Slave Tắt
+      |                 ^~~~~~~~~~~~~
+arm-none-eabi-gcc -o "lab4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: lab4.elf
+ 
+arm-none-eabi-size  lab4.elf 
+arm-none-eabi-objdump -h -S lab4.elf  > "lab4.list"
+   text	   data	    bss	    dec	    hex	filename
+    956	      0	   1568	   2524	    9dc	lab4.elf
+arm-none-eabi-objcopy  -O binary lab4.elf  "lab4.bin"
+Finished building: default.size.stdout
+ 
+Finished building: lab4.list
+Finished building: lab4.bin
+ 
+ 
+12:13:50 **** Incremental Build of configuration Debug for project lab4 ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'master':
+../Src/main.c:283:13: warning: implicit declaration of function 'LED_Init' [-Wimplicit-function-declaration]
+  283 |             LED_Init();
+      |             ^~~~~~~~
+../Src/main.c:288:17: warning: implicit declaration of function 'SPI1_Transmit'; did you mean 'SPI_Transmit'? [-Wimplicit-function-declaration]
+  288 |                 SPI1_Transmit(1);         // Gửi lệnh 1 để Slave Tắt
+      |                 ^~~~~~~~~~~~~
+      |                 SPI_Transmit
+../Src/main.c: At top level:
+../Src/main.c:297:6: warning: conflicting types for 'LED_Init'; have 'void(void)'
+  297 | void LED_Init(void) {
+      |      ^~~~~~~~
+../Src/main.c:283:13: note: previous implicit declaration of 'LED_Init' with type 'void(void)'
+  283 |             LED_Init();
+      |             ^~~~~~~~
+../Src/main.c:303:6: warning: conflicting types for 'SPI1_Transmit'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
+  303 | void SPI1_Transmit(uint8_t data) {
+      |      ^~~~~~~~~~~~~
+../Src/main.c:288:17: note: previous implicit declaration of 'SPI1_Transmit' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
+  288 |                 SPI1_Transmit(1);         // Gửi lệnh 1 để Slave Tắt
+      |                 ^~~~~~~~~~~~~
+arm-none-eabi-gcc -o "lab4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: lab4.elf
+ 
+arm-none-eabi-size  lab4.elf 
+arm-none-eabi-objdump -h -S lab4.elf  > "lab4.list"
+   text	   data	    bss	    dec	    hex	filename
+    572	      0	   1568	   2140	    85c	lab4.elf
+arm-none-eabi-objcopy  -O binary lab4.elf  "lab4.bin"
+Finished building: default.size.stdout
+ 
+Finished building: lab4.list
+Finished building: lab4.bin
+ 
+ 
+13:00:49 **** Incremental Build of configuration Debug for project Calculate ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Calculate.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Calculate\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Calculate.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Calculate.elf
+ 
+arm-none-eabi-size  Calculate.elf 
+arm-none-eabi-objdump -h -S Calculate.elf  > "Calculate.list"
+   text	   data	    bss	    dec	    hex	filename
+   4420	    100	   1924	   6444	   192c	Calculate.elf
+Finished building: default.size.stdout
+ 
+Finished building: Calculate.list
+ 
+13:02:43 **** Incremental Build of configuration Debug for project Calculate ****
+make -j16 all 
+arm-none-eabi-size  Calculate.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4420	    100	   1924	   6444	   192c	Calculate.elf
+Finished building: default.size.stdout
+ 
+13:04:19 **** Incremental Build of configuration Debug for project Calculate ****
+make -j16 all 
+arm-none-eabi-size  Calculate.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4420	    100	   1924	   6444	   192c	Calculate.elf
+Finished building: default.size.stdout
+ 
+13:04:31 **** Incremental Build of configuration Debug for project Calculate ****
+make -j16 all 
+arm-none-eabi-size  Calculate.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4420	    100	   1924	   6444	   192c	Calculate.elf
+Finished building: default.size.stdout
+ 
+13:05:24 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'uart_write':
+../Src/main.c:33:16: warning: implicit declaration of function 'uart1_write'; did you mean 'uart_write'? [-Wimplicit-function-declaration]
+   33 |     while (*s) uart1_write(*s++);
+      |                ^~~~~~~~~~~
+      |                uart_write
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `uart_write':
+C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:33:(.text.uart_write+0x14): undefined reference to `uart1_write'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `draw':
+C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:40:(.text.draw+0x32): undefined reference to `uart1_write'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:41:(.text.draw+0x4e): undefined reference to `uart1_write'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:42:(.text.draw+0x6a): undefined reference to `uart1_write'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:47:(.text.draw+0x9a): undefined reference to `uart1_write'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o:C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:51: more undefined references to `uart1_write' follow
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Snake.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+13:05:33 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `uart_write':
+C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:33:(.text.uart_write+0x14): undefined reference to `uart1_write'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `draw':
+C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:40:(.text.draw+0x32): undefined reference to `uart1_write'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:41:(.text.draw+0x4e): undefined reference to `uart1_write'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:42:(.text.draw+0x6a): undefined reference to `uart1_write'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:47:(.text.draw+0x9a): undefined reference to `uart1_write'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o:C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:51: more undefined references to `uart1_write' follow
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Snake.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+13:05:51 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `uart_write':
+C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:33:(.text.uart_write+0x14): undefined reference to `uart1_write'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `draw':
+C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:40:(.text.draw+0x32): undefined reference to `uart1_write'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:41:(.text.draw+0x4e): undefined reference to `uart1_write'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:42:(.text.draw+0x6a): undefined reference to `uart1_write'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:47:(.text.draw+0x9a): undefined reference to `uart1_write'
+C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o:C:/Users/Lenovo/Desktop/embedding/Snake/Debug/../Src/main.c:51: more undefined references to `uart1_write' follow
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Snake.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+13:06:31 **** Incremental Build of configuration Debug for project Calculate ****
+make -j16 all 
+arm-none-eabi-size  Calculate.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4420	    100	   1924	   6444	   192c	Calculate.elf
+Finished building: default.size.stdout
+ 
+13:09:05 **** Incremental Build of configuration Debug for project lab2 ****
+make -j16 all 
+arm-none-eabi-size  lab2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1212	     24	   1632	   2868	    b34	lab2.elf
+Finished building: default.size.stdout
+ 
+13:10:48 **** Incremental Build of configuration Debug for project Calculate ****
+make -j16 all 
+arm-none-eabi-size  Calculate.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4420	    100	   1924	   6444	   192c	Calculate.elf
+Finished building: default.size.stdout
+ 
+13:11:46 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+   6212	    100	   2708	   9020	   233c	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+13:14:06 **** Incremental Build of configuration Debug for project Calculate ****
+make -j16 all 
+arm-none-eabi-size  Calculate.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4420	    100	   1924	   6444	   192c	Calculate.elf
+Finished building: default.size.stdout
+ 
+13:25:46 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-size  Snake.elf 
+   text	   data	    bss	    dec	    hex	filename
+   6212	    100	   2708	   9020	   233c	Snake.elf
+Finished building: default.size.stdout
+ 
+13:30:13 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+   6300	    100	   2708	   9108	   2394	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+13:31:24 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+   7348	    100	   2716	  10164	   27b4	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 
+13:33:44 **** Incremental Build of configuration Debug for project Snake ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Snake.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\Snake\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Snake.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Snake.elf
+ 
+arm-none-eabi-size  Snake.elf 
+arm-none-eabi-objdump -h -S Snake.elf  > "Snake.list"
+   text	   data	    bss	    dec	    hex	filename
+   7348	    100	   2716	  10164	   27b4	Snake.elf
+Finished building: default.size.stdout
+ 
+Finished building: Snake.list
+ 

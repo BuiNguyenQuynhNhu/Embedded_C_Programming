@@ -1,0 +1,346 @@
+#include "stm32f103xb.h"
+#include "uart.h"
+#include "spi.h"
+
+void SPI_Master_Init(void)
+{
+    /*--------------------------------------------------
+     * 1. Bật clock cho GPIOA và SPI1
+     *-------------------------------------------------*/
+
+    /* Bật clock port A: RCC_APB2ENR bit2 = 1 */
+    RCC->APB2ENR |= (1U << 2);   // GPIOAEN
+
+    /* Bật clock SPI1: RCC_APB2ENR bit12 = 1 */
+    RCC->APB2ENR |= (1U << 12);  // SPI1EN
+
+
+    /*--------------------------------------------------
+     * 2. Cấu hình GPIOA:
+     *   PA4 - CS   : output push-pull 50MHz
+     *   PA5 - SCK  : AF push-pull 50MHz
+     *   PA6 - MISO : input floating
+     *   PA7 - MOSI : AF push-pull 50MHz
+     *
+     *   Mỗi chân trong CRL chiếm 4 bit:
+     *   [CNF1 CNF0 MODE1 MODE0]
+     *-------------------------------------------------*/
+
+    /*------------ PA4 (CS) - General purpose output push-pull, 50MHz ------------*/
+    /* Xoá 4 bit cấu hình PA4: CRL[19:16] = 0000 */
+    GPIOA->CRL &= ~(1U << 16);
+    GPIOA->CRL &= ~(1U << 17);
+    GPIOA->CRL &= ~(1U << 18);
+    GPIOA->CRL &= ~(1U << 19);
+
+    /* MODE[1:0] = 11 (output 50MHz) */
+    GPIOA->CRL |=  (1U << 16);   // MODE0 = 1
+    GPIOA->CRL |=  (1U << 17);   // MODE1 = 1
+
+    /* CNF[1:0] = 00 (general purpose push-pull) */
+    GPIOA->CRL &= ~(1U << 18);   // CNF0 = 0
+    GPIOA->CRL &= ~(1U << 19);   // CNF1 = 0
+
+
+    /*------------ PA5 (SCK) - Alternate function push-pull, 50MHz ---------------*/
+    /* Xoá 4 bit cấu hình PA5: CRL[23:20] = 0000 */
+    GPIOA->CRL &= ~(1U << 20);
+    GPIOA->CRL &= ~(1U << 21);
+    GPIOA->CRL &= ~(1U << 22);
+    GPIOA->CRL &= ~(1U << 23);
+
+    /* MODE[1:0] = 11 (output 50MHz) */
+    GPIOA->CRL |=  (1U << 20);   // MODE0 = 1
+    GPIOA->CRL |=  (1U << 21);   // MODE1 = 1
+
+    /* CNF[1:0] = 10 (alternate function push-pull) */
+    GPIOA->CRL &= ~(1U << 22);   // CNF0 = 0
+    GPIOA->CRL |=  (1U << 23);   // CNF1 = 1
+
+
+    /*------------ PA6 (MISO) - Input floating -----------------------------------*/
+    /* Xoá 4 bit cấu hình PA6: CRL[27:24] = 0000 */
+    GPIOA->CRL &= ~(1U << 24);
+    GPIOA->CRL &= ~(1U << 25);
+    GPIOA->CRL &= ~(1U << 26);
+    GPIOA->CRL &= ~(1U << 27);
+
+    /* MODE[1:0] = 00 (input) */
+    GPIOA->CRL &= ~(1U << 24);   // MODE0 = 0
+    GPIOA->CRL &= ~(1U << 25);   // MODE1 = 0
+
+    /* CNF[1:0] = 01 (floating input) */
+    GPIOA->CRL |=  (1U << 26);   // CNF0 = 1
+    GPIOA->CRL &= ~(1U << 27);   // CNF1 = 0
+
+
+    /*------------ PA7 (MOSI) - Alternate function push-pull, 50MHz --------------*/
+    /* Xoá 4 bit cấu hình PA7: CRL[31:28] = 0000 */
+    GPIOA->CRL &= ~(1U << 28);
+    GPIOA->CRL &= ~(1U << 29);
+    GPIOA->CRL &= ~(1U << 30);
+    GPIOA->CRL &= ~(1U << 31);
+
+    /* MODE[1:0] = 11 (output 50MHz) */
+    GPIOA->CRL |=  (1U << 28);   // MODE0 = 1
+    GPIOA->CRL |=  (1U << 29);   // MODE1 = 1
+
+    /* CNF[1:0] = 10 (alternate function push-pull) */
+    GPIOA->CRL &= ~(1U << 30);   // CNF0 = 0
+    GPIOA->CRL |=  (1U << 31);   // CNF1 = 1
+    /*--------------------------------------------------
+         * 3. Cấu hình SPI1 (CR1)
+         *   - Master
+         *   - Mode 0 (CPOL=0, CPHA=0)
+         *   - Baudrate = f_PCLK/16 (BR = 011)
+         *   - 8-bit, MSB first
+         *   - NSS mềm (SSM=1, SSI=1)
+         *-------------------------------------------------*/
+
+        /* Xoá toàn bộ CR1 về 0 */
+        SPI1->CR1 = 0;
+
+        /* Bit 2 MSTR = 1 (chọn MASTER) */
+        SPI1->CR1 |= (1U << 2);
+
+        /* CPOL = 0: Clock idle low
+         *  -> Bit 1 CPOL = 0
+         */
+        SPI1->CR1 &= ~(1U << 1);
+
+        /* CPHA = 0: sample tại cạnh lên đầu tiên
+         *  -> Bit 0 CPHA = 0
+         */
+        SPI1->CR1 &= ~(1U << 0);
+
+        /* Baudrate BR[2:0] = 011 => f_PCLK/16
+         * BR2 (bit5) = 0
+         * BR1 (bit4) = 1
+         * BR0 (bit3) = 1
+         */
+        SPI1->CR1 &= ~(1U << 5);   // BR2 = 0
+        SPI1->CR1 |=  (1U << 4);   // BR1 = 1
+        SPI1->CR1 |=  (1U << 3);   // BR0 = 1
+
+        /* Full duplex:
+         *  - RXONLY (bit10) = 0
+         *  - BIDIMODE (bit15) = 0
+         */
+        SPI1->CR1 &= ~(1U << 10);  // RXONLY = 0
+        SPI1->CR1 &= ~(1U << 15);  // BIDIMODE = 0
+
+        /* MSB first:
+         *  LSBFIRST (bit7) = 0
+         */
+        SPI1->CR1 &= ~(1U << 7);
+
+        /* 8-bit data frame:
+         *  DFF (bit11) = 0
+         */
+        SPI1->CR1 &= ~(1U << 11);
+
+        /* NSS mềm:
+         *  SSM (bit9) = 1  -> enable quản lý NSS bằng phần mềm
+         *  SSI (bit8) = 1  -> NSS nội bộ = 1 (tránh bị coi là de-selected)
+         */
+        SPI1->CR1 |= (1U << 9);    // SSM = 1
+        SPI1->CR1 |= (1U << 8);    // SSI = 1
+
+        /*--------------------------------------------------
+         * 4. Enable SPI (SPE = 1)
+         *-------------------------------------------------*/
+
+        /* SPE (bit6) = 1: bật SPI1 */
+        SPI1->CR1 |= (1U << 6);
+    }
+
+
+void SPI_Slave_Init(void)
+{
+    /*--------------------------------------------------
+     * 1. Bật clock cho GPIOA và SPI1
+     *-------------------------------------------------*/
+
+    /* RCC_APB2ENR:
+     *  bit2  = IOPAEN (GPIOA clock enable)
+     *  bit12 = SPI1EN (SPI1 clock enable)
+     */
+    RCC->APB2ENR |= (1U << 2);    // bật clock GPIOA
+    RCC->APB2ENR |= (1U << 12);   // bật clock SPI1
+
+    /*--------------------------------------------------
+     * 2. Cấu hình GPIOA cho SPI1 SLAVE:
+     *
+     *  PA4 = NSS  : input pull-up (để làm chip select từ master)
+     *  PA5 = SCK  : input floating (clock từ master)
+     *  PA6 = MISO : AF push-pull 50MHz (slave xuất data)
+     *  PA7 = MOSI : input floating (data từ master)
+     *
+     *  Mỗi chân trong CRL: 4 bit [CNF1 CNF0 MODE1 MODE0]
+     *-------------------------------------------------*/
+
+    /* Xoá cấu hình cũ cho PA4..PA7 (CRL[31:16]) */
+    GPIOA->CRL &= ~((0xFU << 16) |   // PA4
+                    (0xFU << 20) |   // PA5
+                    (0xFU << 24) |   // PA6
+                    (0xFU << 28));   // PA7
+
+    /*------------ PA4 (NSS) - Input with pull-up -----------------
+     * MODE[1:0] = 00 (input)
+     * CNF[1:0]  = 10 (input with pull-up / pull-down)
+     * -> nibble = 1000b = 0x8
+     */
+    GPIOA->CRL |= (0x8U << 16);
+
+    /* Chọn pull-up: khi CNF=10, bit ODR chọn PU/PD
+     *  ODR4 = 1 -> pull-up
+     *  ODR4 = 0 -> pull-down
+     */
+    GPIOA->ODR |= (1U << 4);   // kéo lên NSS khi chưa có master
+
+
+    /*------------ PA5 (SCK) - Input floating ----------------------
+     * MODE[1:0] = 00 (input)
+     * CNF[1:0]  = 01 (floating input)
+     * -> nibble = 0100b = 0x4
+     */
+    GPIOA->CRL |= (0x4U << 20);
+
+
+    /*------------ PA6 (MISO) - AF push-pull, 50MHz ----------------
+     * MODE[1:0] = 11 (output 50MHz)
+     * CNF[1:0]  = 10 (alternate function push-pull)
+     * -> nibble = 1011b = 0xB
+     */
+    GPIOA->CRL |= (0xBU << 24);
+
+
+    /*------------ PA7 (MOSI) - Input floating ---------------------
+     * MODE[1:0] = 00 (input)
+     * CNF[1:0]  = 01 (floating input)
+     * -> nibble = 0100b = 0x4
+     */
+    GPIOA->CRL |= (0x4U << 28);
+
+
+    /*--------------------------------------------------
+     * 3. Cấu hình SPI1 ở chế độ SLAVE
+     *
+     *  - MSTR = 0  (slave)
+     *  - CPOL = 0, CPHA = 0  (mode 0, phải trùng F407/Fxxx master)
+     *  - 8-bit, MSB first
+     *  - Full duplex
+     *  - Dùng NSS phần cứng: SSM = 0
+     *-------------------------------------------------*/
+
+    /* Xoá CR1 về 0 để tránh dính config cũ */
+    SPI1->CR1 = 0;
+
+    /* MSTR (bit2) = 0 -> slave mode
+     * (mặc định đã =0, nhưng set lại cho chắc)
+     */
+    SPI1->CR1 &= ~(1U << 2);
+
+    /* CPOL (bit1) = 0 -> SCK idle low
+     * CPHA (bit0) = 0 -> sample tại cạnh lên đầu tiên
+     */
+    SPI1->CR1 &= ~(1U << 1);   // CPOL = 0
+    SPI1->CR1 &= ~(1U << 0);   // CPHA = 0
+
+    /* Full duplex:
+     *  RXONLY (bit10) = 0
+     *  BIDIMODE (bit15) = 0
+     */
+    SPI1->CR1 &= ~(1U << 10);  // RXONLY = 0
+    SPI1->CR1 &= ~(1U << 15);  // BIDIMODE = 0
+
+    /* 8-bit data frame:
+     *  DFF (bit11) = 0
+     */
+    SPI1->CR1 &= ~(1U << 11);
+
+    /* MSB first:
+     *  LSBFIRST (bit7) = 0
+     */
+    SPI1->CR1 &= ~(1U << 7);
+
+    /* Dùng NSS phần cứng:
+     *  SSM (bit9) = 0 -> NSS lấy từ chân PA4
+     *  (SSI bit8 không còn tác dụng khi SSM=0)
+     */
+    SPI1->CR1 &= ~(1U << 9);   // SSM = 0
+
+    /*--------------------------------------------------
+     * 4. Bật SPI1 (SPE = 1)
+     *-------------------------------------------------*/
+
+    /* SPE (bit6) = 1 -> enable SPI peripheral */
+    SPI1->CR1 |= (1U << 6);
+}
+
+void master(){
+	SPI_Master_Init();
+	    LED_Init();
+
+	    while (1) {
+	        // --- TRẠNG THÁI 1: Master BẬT (0) -> Slave TẮT (Gửi 1) ---
+	        GPIOC->BRR = (1U << 13);  // Master LED Sáng (Mức 0)
+	        SPI1_Transmit(1);         // Gửi lệnh 1 để Slave Tắt
+	        for (volatile int i = 0; i < 2000000; i++); // Đợi 1 khoảng thời gian
+
+	        // --- TRẠNG THÁI 2: Master TẮT (1) -> Slave BẬT (Gửi 0) ---
+	        GPIOC->BSRR = (1U << 13); // Master LED Tắt (Mức 1)
+	        SPI1_Transmit(0);         // Gửi lệnh 0 để Slave Sáng
+	        for (volatile int i = 0; i < 2000000; i++); // Đợi 1 khoảng thời gian
+	    }
+}
+void LED_Init(void) {
+    RCC->APB2ENR |= (1U << 4);    // Bật clock Port C
+    GPIOC->CRH &= ~(0xFU << 20);  // Xóa cấu hình PC13
+    GPIOC->CRH |= (0x3U << 20);   // Output push-pull 50MHz
+}
+
+void SPI1_Transmit(uint8_t data) {
+    GPIOA->BRR = (1U << 4);          // CS LOW
+
+    while (!(SPI1->SR & (1U << 1))); // Chờ TXE trống
+    SPI1->DR = data;                 // Gửi dữ liệu
+
+    while (!(SPI1->SR & (1U << 0))); // Chờ RXNE (Nhận xong 1 byte phản hồi)
+    (void)SPI1->DR;                  // Đọc bỏ dữ liệu nhận về để xóa cờ RXNE
+
+    while (SPI1->SR & (1U << 7));    // Chờ BSY = 0 (Đảm bảo truyền xong hoàn toàn)
+
+    GPIOA->BSRR = (1U << 4);         // CS HIGH
+}
+
+uint8_t SPI1_Receive(void) {
+    // Nếu có lỗi Overrun, xóa nó bằng cách đọc DR và SR
+    if (SPI1->SR & (1U << 6)) {
+        (void)SPI1->DR;
+        (void)SPI1->SR;
+    }
+
+    while (!(SPI1->SR & (1U << 0))); // Chờ RXNE
+    return (uint8_t)SPI1->DR;        // Trả về dữ liệu
+}
+void slave(){
+	SPI_Slave_Init();
+	    LED_Init();
+
+	    while (1) {
+	        uint8_t cmd = SPI1_Receive(); // Nhận lệnh 0 hoặc 1 từ Master
+
+	        if (cmd == 0) {
+	            GPIOC->BRR = (1U << 13);  // Nhận 0 -> Slave LED Sáng
+	        } else {
+	            GPIOC->BSRR = (1U << 13); // Nhận 1 -> Slave LED Tắt
+	        }
+	    }
+}
+int main(void) {
+    slave();
+}
+
+
+

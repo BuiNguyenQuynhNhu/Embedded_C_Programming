@@ -1,0 +1,95 @@
+#include "stm32f103xb.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define SR_TXE (1U << 7)
+
+char keys[4][4] = {
+    {'1', '2', '3', '+'},
+    {'4', '5', '6', '-'},
+    {'7', '8', '9', '*'},
+    {'0', '/', '%', '='}
+};
+
+// Biến lưu trữ trạng thái tính toán liên hoàn
+int current_result = 0;
+char last_op = 0;
+char input_buffer[16] = {0};
+int idx = 0;
+int is_first_input = 1;
+
+void uart1_init(void) {
+    RCC->APB2ENR |= (1 << 2) | (1 << 14);
+    GPIOA->CRH &= ~(0xF << 4);
+    GPIOA->CRH |= (0xB << 4);
+    USART1->BRR = 0x0341; // 9600 baud
+    USART1->CR1 |= (1 << 13) | (1 << 3);
+}
+
+void uart1_write_str(const char *s) {
+    while (*s) {
+        while (!(USART1->SR & SR_TXE));
+        USART1->DR = (*s++ & 0xFF);
+    }
+}
+
+// Hàm thực hiện phép tính dựa trên toán tử
+int calculate(int v1, int v2, char op) {
+    switch(op) {
+        case '+': return v1 + v2;
+        case '-': return v1 - v2;
+        case '*': return v1 * v2;
+        case '/': return (v2 != 0) ? v1 / v2 : 0;
+        case '%': return (v2 != 0) ? v1 % v2 : 0;
+        default: return v2;
+    }
+}
+
+int main(void) {
+    uart1_init();
+    keypad_init(); // Khởi tạo PA0-PA7 như bài trước
+
+    uart1_write_str("\r\nChain Calculator Ready!\r\n");
+
+    while (1) {
+        char key = keypad_scan(); // Hàm quét ma trận 4x4
+        if (key) {
+            // Hiển thị phím bấm lên UART
+            char echo[2] = {key, '\0'};
+            uart1_write_str(echo);
+
+            if (key >= '0' && key <= '9') {
+                if (idx < 15) input_buffer[idx++] = key;
+            }
+            else {
+                // Khi nhấn một phím chức năng (+, -, *, /, %, =)
+                input_buffer[idx] = '\0';
+                int current_val = atoi(input_buffer);
+                idx = 0;
+
+                if (is_first_input) {
+                    current_result = current_val;
+                    is_first_input = 0;
+                } else {
+                    // Thực hiện phép tính tích lũy từ toán tử trước đó
+                    current_result = calculate(current_result, current_val, last_op);
+                }
+
+                if (key == '=') {
+                    char res_str[32];
+                    sprintf(res_str, "\r\nTotal Result: %d\r\n", current_result);
+                    uart1_write_str(res_str);
+
+                    // Reset trạng thái sau khi hiện kết quả cuối cùng
+                    is_first_input = 1;
+                    last_op = 0;
+                } else {
+                    // Lưu toán tử vừa nhấn để dùng cho lần sau
+                    last_op = key;
+                }
+                memset(input_buffer, 0, 16);
+            }
+        }
+    }
+}

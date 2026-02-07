@@ -1,0 +1,8 @@
+../Src/main.c:5:6:SPI_Master_Init	1
+../Src/main.c:158:6:SPI_Slave_Init	1
+../Src/main.c:281:6:master	3
+../Src/main.c:297:6:LED_Init	1
+../Src/main.c:303:6:SPI1_Transmit	4
+../Src/main.c:317:9:SPI1_Receive	3
+../Src/main.c:331:6:slave	2
+../Src/main.c:346:5:main	1
