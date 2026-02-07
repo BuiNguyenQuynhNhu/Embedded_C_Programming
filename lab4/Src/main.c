@@ -17,13 +17,136 @@
  */
 
 #include <stdint.h>
+void ADXL345_Init(void);
+void ADXL345_ReadXYZ(int16_t *x, int16_t *y, int16_t *z);
+#define ADXL345_ADDR      0x53
 
-#if !defined(__SOFT_FP__) && defined(__ARM_FP)
-  #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
-#endif
+#define REG_POWER_CTL     0x2D
+#define REG_DATA_FORMAT   0x31
+#define REG_DATAX0        0x32
 
+void ADXL345_Init(void)
+{
+
+    I2C_WriteReg(ADXL345_ADDR, REG_POWER_CTL, 0x08);
+
+    I2C_WriteReg(ADXL345_ADDR, REG_DATA_FORMAT, 0x08);
+}
+
+void ADXL345_ReadXYZ(int16_t *x, int16_t *y, int16_t *z)
+{
+    uint8_t xl = I2C_ReadReg(ADXL345_ADDR, REG_DATAX0);
+    uint8_t xh = I2C_ReadReg(ADXL345_ADDR, REG_DATAX0 + 1);
+    uint8_t yl = I2C_ReadReg(ADXL345_ADDR, REG_DATAX0 + 2);
+    uint8_t yh = I2C_ReadReg(ADXL345_ADDR, REG_DATAX0 + 3);
+    uint8_t zl = I2C_ReadReg(ADXL345_ADDR, REG_DATAX0 + 4);
+    uint8_t zh = I2C_ReadReg(ADXL345_ADDR, REG_DATAX0 + 5);
+
+    *x = (int16_t)((xh << 8) | xl);
+    *y = (int16_t)((yh << 8) | yl);
+    *z = (int16_t)((zh << 8) | zl);
+}
+
+void I2C1_Init(void);
+void I2C_WriteReg(uint8_t devAddr, uint8_t reg, uint8_t data);
+uint8_t I2C_ReadReg(uint8_t devAddr, uint8_t reg);
+static inline void i2c_wait_sb(void)
+{
+    while (!(I2C1->SR1 & I2C_SR1_SB));
+}
+
+static inline void i2c_wait_addr(void)
+{
+    while (!(I2C1->SR1 & I2C_SR1_ADDR));
+    (void)I2C1->SR2;
+}
+
+static inline void i2c_wait_txe(void)
+{
+    while (!(I2C1->SR1 & I2C_SR1_TXE));
+}
+
+static inline void i2c_wait_rxne(void)
+{
+    while (!(I2C1->SR1 & I2C_SR1_RXNE));
+}
+
+void I2C1_Init(void)
+{
+    /* Enable clock */
+    RCC->APB2ENR |= RCC_APB2ENR_IOPBEN;
+    RCC->APB1ENR |= RCC_APB1ENR_I2C1EN;
+
+    /* PB6=SCL, PB7=SDA (AF Open-drain, 50MHz) */
+    GPIOB->CRL &= ~((0xF << 24) | (0xF << 28));
+    GPIOB->CRL |=  ((0xB << 24) | (0xB << 28));
+
+    /* Reset I2C */
+    I2C1->CR1 |= I2C_CR1_SWRST;
+    I2C1->CR1 &= ~I2C_CR1_SWRST;
+
+    /* APB1 = 36MHz */
+    I2C1->CR2 = 36;
+
+    /* 100kHz */
+    I2C1->CCR = 180;
+    I2C1->TRISE = 37;
+
+    I2C1->CR1 |= I2C_CR1_PE;
+}
+
+void I2C_WriteReg(uint8_t devAddr, uint8_t reg, uint8_t data)
+{
+    I2C1->CR1 |= I2C_CR1_START;
+    i2c_wait_sb();
+
+    I2C1->DR = devAddr << 1;
+    i2c_wait_addr();
+
+    i2c_wait_txe();
+    I2C1->DR = reg;
+
+    i2c_wait_txe();
+    I2C1->DR = data;
+
+    while (!(I2C1->SR1 & I2C_SR1_BTF));
+    I2C1->CR1 |= I2C_CR1_STOP;
+}
+
+uint8_t I2C_ReadReg(uint8_t devAddr, uint8_t reg)
+{
+    uint8_t data;
+
+    I2C1->CR1 |= I2C_CR1_START;
+    i2c_wait_sb();
+    I2C1->DR = devAddr << 1;
+    i2c_wait_addr();
+    i2c_wait_txe();
+    I2C1->DR = reg;
+    while (!(I2C1->SR1 & I2C_SR1_BTF));
+
+    I2C1->CR1 |= I2C_CR1_START;
+    i2c_wait_sb();
+    I2C1->DR = (devAddr << 1) | 1;
+    i2c_wait_addr();
+
+    I2C1->CR1 &= ~I2C_CR1_ACK;
+    I2C1->CR1 |= I2C_CR1_STOP;
+
+    i2c_wait_rxne();
+    data = I2C1->DR;
+
+    return data;
+}
 int main(void)
 {
-    /* Loop forever */
-	for(;;);
+    int16_t x, y, z;
+
+    I2C1_Init();
+    ADXL345_Init();
+
+    while (1)
+    {
+        ADXL345_ReadXYZ(&x, &y, &z);
+    }
 }

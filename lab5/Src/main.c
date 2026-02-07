@@ -17,11 +17,87 @@
  */
 
 #include <stdint.h>
+#include "stm32f103xb.h"
+void UART1_Init(void);
+void UART1_SendChar(char c);
+void UART1_SendString(char *str);
+void UART1_SendNumber(uint16_t num);
 
-#if !defined(__SOFT_FP__) && defined(__ARM_FP)
-  #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
-#endif
+void UART1_Init(void)
+{
+    RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
+    RCC->APB2ENR |= RCC_APB2ENR_USART1EN;
+    GPIOA->CRH &= ~(0xF << 4);
+    GPIOA->CRH |=  (0xB << 4);  
+    USART1->BRR = 0x1D4C;
 
+    USART1->CR1 |= USART_CR1_TE;
+    USART1->CR1 |= USART_CR1_UE;
+}
+
+void UART1_SendChar(char c)
+{
+    while (!(USART1->SR & USART_SR_TXE));
+    USART1->DR = c;
+}
+
+void UART1_SendString(char *str)
+{
+    while (*str)
+    {
+        UART1_SendChar(*str++);
+    }
+}
+
+void UART1_SendNumber(uint16_t num)
+{
+    char buf[6];
+    int i = 0;
+
+    if (num == 0)
+    {
+        UART1_SendChar('0');
+        return;
+    }
+
+    while (num > 0)
+    {
+        buf[i++] = (num % 10) + '0';
+        num /= 10;
+    }
+
+    while (i--)
+    {
+        UART1_SendChar(buf[i]);
+    }
+}
+void ADC1_Init(void);
+uint16_t ADC1_Read(void);
+void ADC1_Init(void)
+{
+    RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
+    RCC->APB2ENR |= RCC_APB2ENR_ADC1EN;
+    GPIOA->CRL &= ~(0xF << 0);
+    RCC->CFGR |= RCC_CFGR_ADCPRE_DIV6;
+
+    ADC1->SMPR2 &= ~(7 << 0);
+    ADC1->SMPR2 |=  (7 << 0);  
+    ADC1->CR2 |= ADC_CR2_ADON;
+
+    for (volatile int i = 0; i < 10000; i++);
+
+    ADC1->CR2 |= ADC_CR2_CAL;
+    while (ADC1->CR2 & ADC_CR2_CAL);
+}
+
+uint16_t ADC1_Read(void)
+{
+    ADC1->SQR3 = 0;
+    ADC1->CR2 |= ADC_CR2_ADON;
+    while (!(ADC1->SR & ADC_SR_EOC));
+
+    return ADC1->DR;
+}
 int main(void)
 {
     /* Loop forever */
