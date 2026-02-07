@@ -12,6 +12,7 @@
 		<item value="uart"/>
 	</list>
 	<list key="searchhistory">
+		<item value="ti"/>
 		<item value="is_on_snake"/>
 		<item value="is_first_input"/>
 		<item value="uart1"/>

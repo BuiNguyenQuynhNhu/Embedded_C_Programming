@@ -1,41 +1,12 @@
-12:13:50 **** Incremental Build of configuration Debug for project lab4 ****
+18:34:36 **** Incremental Build of configuration Debug for project lab4 ****
 make -j16 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-../Src/main.c: In function 'master':
-../Src/main.c:283:13: warning: implicit declaration of function 'LED_Init' [-Wimplicit-function-declaration]
-  283 |             LED_Init();
-      |             ^~~~~~~~
-../Src/main.c:288:17: warning: implicit declaration of function 'SPI1_Transmit'; did you mean 'SPI_Transmit'? [-Wimplicit-function-declaration]
-  288 |                 SPI1_Transmit(1);         // Gửi lệnh 1 để Slave Tắt
-      |                 ^~~~~~~~~~~~~
-      |                 SPI_Transmit
-../Src/main.c: At top level:
-../Src/main.c:297:6: warning: conflicting types for 'LED_Init'; have 'void(void)'
-  297 | void LED_Init(void) {
-      |      ^~~~~~~~
-../Src/main.c:283:13: note: previous implicit declaration of 'LED_Init' with type 'void(void)'
-  283 |             LED_Init();
-      |             ^~~~~~~~
-../Src/main.c:303:6: warning: conflicting types for 'SPI1_Transmit'; have 'void(uint8_t)' {aka 'void(unsigned char)'}
-  303 | void SPI1_Transmit(uint8_t data) {
-      |      ^~~~~~~~~~~~~
-../Src/main.c:288:17: note: previous implicit declaration of 'SPI1_Transmit' with type 'void(uint8_t)' {aka 'void(unsigned char)'}
-  288 |                 SPI1_Transmit(1);         // Gửi lệnh 1 để Slave Tắt
-      |                 ^~~~~~~~~~~~~
-arm-none-eabi-gcc -o "lab4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\Lenovo\Desktop\embedding\lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: lab4.elf
- 
-arm-none-eabi-size  lab4.elf 
-arm-none-eabi-objdump -h -S lab4.elf  > "lab4.list"
-   text	   data	    bss	    dec	    hex	filename
-    572	      0	   1568	   2140	    85c	lab4.elf
-arm-none-eabi-objcopy  -O binary lab4.elf  "lab4.bin"
-Finished building: default.size.stdout
- 
-Finished building: lab4.list
-Finished building: lab4.bin
- 
- 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c:2:10: fatal error: stm32f103xb.h: No such file or directory
+    2 | #include "stm32f103xb.h"
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
 
-12:13:51 Build Finished. 0 errors, 4 warnings. (took 507ms)
+18:34:36 Build Failed. 2 errors, 0 warnings. (took 204ms)
 

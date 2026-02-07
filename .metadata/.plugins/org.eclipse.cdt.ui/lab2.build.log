@@ -1,10 +1,12 @@
-13:09:05 **** Incremental Build of configuration Debug for project lab2 ****
+18:34:35 **** Build of configuration Debug for project lab2 ****
 make -j16 all 
-arm-none-eabi-size  lab2.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1212	     24	   1632	   2868	    b34	lab2.elf
-Finished building: default.size.stdout
- 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Include" -I"C:/Users/Lenovo/Desktop/embedding/STM32Cube_FW_F1_V1.8.0/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c:1:10: fatal error: stm32f103xb.h: No such file or directory
+    1 | #include "stm32f103xb.h"
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
 
-13:09:06 Build Finished. 0 errors, 0 warnings. (took 156ms)
+18:34:36 Build Failed. 2 errors, 0 warnings. (took 209ms)
 
