@@ -100,6 +100,23 @@ uint16_t ADC1_Read(void)
 }
 int main(void)
 {
-    /* Loop forever */
-	for(;;);
+    UART1_Init();
+    ADC1_Init();
+    
+    uint16_t adc_val;
+    uint32_t voltage_mv;
+
+    while(1)
+    {
+
+        adc_val = ADC1_Read();
+
+        voltage_mv = (uint32_t)((adc_val * 3300) / 4095);
+
+        UART1_SendString("Voltage: ");
+        UART1_SendNumber(voltage_mv);
+        UART1_SendString(" mV\r\n");
+
+        for (volatile int i = 0; i < 1000000; i++);
+    }
 }

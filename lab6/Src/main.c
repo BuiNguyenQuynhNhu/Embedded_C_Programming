@@ -47,3 +47,36 @@ void PWM_SetDuty(uint16_t duty)
     if (duty > 1000) duty = 1000;
     TIM3->CCR1 = duty;
 }
+
+void TIM2_Delay_ms(uint32_t ms)
+{
+    RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;
+
+    TIM2->PSC = 7200 - 1;   // 72MHz / 7200 = 10kHz
+    TIM2->ARR = 10 - 1;     // 1ms
+    TIM2->CNT = 0;
+    TIM2->CR1 |= TIM_CR1_CEN;
+
+    for (uint32_t i = 0; i < ms; i++)
+    {
+        while (!(TIM2->SR & TIM_SR_UIF));
+        TIM2->SR &= ~TIM_SR_UIF;
+    }
+
+    TIM2->CR1 &= ~TIM_CR1_CEN;
+}
+
+
+int main(void){
+	ADC1_Init();
+    PWM_TIM3_Init();
+
+    uint16_t adc_val = 0;
+
+    while(1) {
+        adc_val = ADC1_Read(); 
+        uint16_t duty = (uint16_t)((adc_val * 1000) / 4095);
+        PWM_SetDuty(duty);
+        TIM2_Delay_ms(50);
+    }
+}
